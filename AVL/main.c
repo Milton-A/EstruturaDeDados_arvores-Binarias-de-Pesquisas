@@ -1,0 +1,5 @@
+#include "funcao.c"
+
+main(){
+	
+}
