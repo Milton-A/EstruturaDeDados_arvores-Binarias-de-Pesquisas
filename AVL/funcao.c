@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+
 struct livro{
 	int codigo;
 	char autor[100];
@@ -12,6 +13,8 @@ struct avl{
 	Livro dados_do_livro;
 	Avl *esquerda, *direita;
 };
+
+// Operações AVL
 void imprimir(Avl *arvore){
 	if(arvore!=NULL){
 		imprimir(arvore->esquerda);
@@ -30,7 +33,6 @@ int altura(Avl *arvore){
 		return (esquerda-direita);		
 	}	
 }
-
 
 Avl *busca(Avl *arvore, int valor){
 	Avl *aux=arvore;
@@ -103,12 +105,12 @@ Avl *inserirRaiz(Avl *arvore,Livro dados){
 		printf("Não foi possível alocar memória");
 	return arvore;
 }
-Avl *inserirfilhos(Avl *arvore,Livro dados){
+Avl *inserirFilhos(Avl *arvore,Livro dados){
 	Avl *aux = arvore,*aux1= (Avl *) malloc(sizeof(Avl));
 	if(aux){
 		if(aux->dados_do_livro.codigo>dados.codigo){
 			if(aux->direita!=NULL)
-				inserirfilhos(aux->direita,dados);
+				inserirFilhos(aux->direita,dados);
 			else{
 				strcpy(aux1->dados_do_livro.autor,dados.autor);
 				strcpy(aux1->dados_do_livro.autor,dados.autor);
@@ -123,7 +125,7 @@ Avl *inserirfilhos(Avl *arvore,Livro dados){
 		}
 		else if(aux->dados_do_livro.codigo<dados.codigo){
 			if(aux->direita!=NULL)
-				inserirfilhos(aux->esquerda,dados);
+				inserirFilhos(aux->esquerda,dados);
 			else{
 				strcpy(aux1->dados_do_livro.autor,dados.autor);
 				strcpy(aux1->dados_do_livro.autor,dados.autor);
@@ -140,7 +142,7 @@ Avl *inserirfilhos(Avl *arvore,Livro dados){
 	}
 	return equilibrar(aux);
 }
-Avl *Eliminar(Avl *arvore){
+Avl *eliminar(Avl *arvore){
 	Avl *aux=arvore,*aux1= (Avl *) malloc(sizeof(Avl));
 
 	if(aux!=NULL){
