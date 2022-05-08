@@ -11,6 +11,9 @@ struct avl{
 	Livro dados_do_livro;
 	Avl *esquerda, *direita;
 };
+void inicializarArvore(Avl *arvore){
+	arvore =NULL;
+}
 void imprimir(Avl *arvore){
 	if(arvore!=NULL){
 		imprimir(arvore->esquerda);
