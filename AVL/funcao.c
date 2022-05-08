@@ -14,11 +14,11 @@ struct avl{
 	Avl *esquerda, *direita;
 };
 
-// Opera√ß√µes AVL
+// Opera√É¬ß√É¬µes AVL
 void imprimir(Avl *arvore){
 	if(arvore!=NULL){
 		imprimir(arvore->esquerda);
-		printf("[Autor]: %s [Livro]: %s [cÛdigo]: %d \n",arvore->dados_do_livro.autor,arvore->dados_do_livro.titutlo,arvore->dados_do_livro.codigo);
+		printf("[Autor]: %s [Livro]: %s [c√≥digo]: %d \n",arvore->dados_do_livro.autor,arvore->dados_do_livro.titutlo,arvore->dados_do_livro.codigo);
 		imprimir(arvore->direita);
 	}
 }
@@ -33,8 +33,6 @@ int bf(Avl *arvore){
 		return (esquerda-direita);		
 	}	
 }
-<<<<<<< HEAD
-=======
 int altura(Avl *arvore){
 	Avl *aux = arvore;
 	int esquerda,direita;
@@ -46,12 +44,11 @@ int altura(Avl *arvore){
 		return direita>esquerda ? direita:esquerda;		
 	}	
 }
->>>>>>> 1748d86d6d430c8f88052d51e13fa7e035707bab
 
 Avl *busca(Avl *arvore, int valor){
 	Avl *aux=arvore;
 	if(aux!=NULL){
-		//retorna quando o valor do cÛdigo do nÛ for igual ao que procuramos
+		//retorna quando o valor do c√≥digo do n√≥ for igual ao que procuramos
 		if(aux->dados_do_livro.codigo==valor)
 			return aux;
 		else if(aux->dados_do_livro.codigo<valor)
@@ -60,7 +57,7 @@ Avl *busca(Avl *arvore, int valor){
 			aux=busca(aux->direita,valor);
 	}
 	else{
-		printf("Valor n„o encontrado...");
+		printf("Valor n√£o encontrado...");
 		system("pause");
 	}
 	return aux;
@@ -116,7 +113,7 @@ Avl *inserirRaiz(Avl *arvore,Livro dados){
 		return aux; 
 	}
 	else
-		printf("N„o foi possÌvel alocar memÛria");
+		printf("N√£o foi poss√≠vel alocar mem√≥ria");
 	return arvore;
 }
 Avl *inserirFilhos(Avl *arvore,Livro dados){
@@ -160,7 +157,7 @@ Avl *eliminar(Avl *arvore){
 	Avl *aux=arvore,*aux1= (Avl *) malloc(sizeof(Avl));
 
 	if(aux!=NULL){
-		//Eliminar nÛs que n„o tÍm filhos(a esquerda e a direita)
+		//Eliminar n√≥s que n√£o t√™m filhos(a esquerda e a direita)
 		if(aux->direita==NULL && aux->esquerda==NULL){
 				free(aux);
 				return aux;
@@ -186,12 +183,12 @@ void distancia(Avl *arvore,int valor, int valor1){
 	int d,h1,h2;
 	if(aux!=NULL && aux1!=NULL){
 		if(aux->direita==aux1||aux1->direita==aux||aux->esquerda==aux1||aux1->esquerda==aux)
-			printf("A dist‚ncia de %d a %d È 1",valor,valor1);
+			printf("A dist√¢ncia de %d a %d √© 1",valor,valor1);
 		else{
 			h1=altura(aux);
 			h2=altura(aux1);
 			d= h1+h2-1;
-			printf("A dist‚ncia de %d a %d È %d",valor,valor1,d);
+			printf("A dist√¢ncia de %d a %d √© %d",valor,valor1,d);
 			
 		}
 	}
