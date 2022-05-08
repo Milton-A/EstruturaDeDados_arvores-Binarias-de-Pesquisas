@@ -18,11 +18,11 @@ struct avl{
 void imprimir(Avl *arvore){
 	if(arvore!=NULL){
 		imprimir(arvore->esquerda);
-		printf("[Autor]: %s [Livro]: %s [c√≥digo]: %d \n",arvore->dados_do_livro.autor,arvore->dados_do_livro.titutlo,arvore->dados_do_livro.codigo);
+		printf("[Autor]: %s [Livro]: %s [cÛdigo]: %d \n",arvore->dados_do_livro.autor,arvore->dados_do_livro.titutlo,arvore->dados_do_livro.codigo);
 		imprimir(arvore->direita);
 	}
 }
-int altura(Avl *arvore){
+int bf(Avl *arvore){
 	Avl *aux = arvore;
 	int esquerda,direita;
 	if(aux!=NULL||aux->direita!=NULL||aux->esquerda!=NULL)
@@ -33,11 +33,25 @@ int altura(Avl *arvore){
 		return (esquerda-direita);		
 	}	
 }
+<<<<<<< HEAD
+=======
+int altura(Avl *arvore){
+	Avl *aux = arvore;
+	int esquerda,direita;
+	if(aux!=NULL||aux->direita!=NULL||aux->esquerda!=NULL)
+		return 0;
+	else{
+		esquerda= 1+altura(aux->esquerda);
+		direita= 1+altura(aux->direita);
+		return direita>esquerda ? direita:esquerda;		
+	}	
+}
+>>>>>>> 1748d86d6d430c8f88052d51e13fa7e035707bab
 
 Avl *busca(Avl *arvore, int valor){
 	Avl *aux=arvore;
 	if(aux!=NULL){
-		//retorna quando o valor do c√≥digo do n√≥ for igual ao que procuramos
+		//retorna quando o valor do cÛdigo do nÛ for igual ao que procuramos
 		if(aux->dados_do_livro.codigo==valor)
 			return aux;
 		else if(aux->dados_do_livro.codigo<valor)
@@ -46,7 +60,7 @@ Avl *busca(Avl *arvore, int valor){
 			aux=busca(aux->direita,valor);
 	}
 	else{
-		printf("Valor n√£o encontrado...");
+		printf("Valor n„o encontrado...");
 		system("pause");
 	}
 	return aux;
@@ -79,15 +93,15 @@ Avl *dupla_rotacao_esquerda(Avl* arvore){
 	return aux;
 }
 Avl *equilibrar(Avl *arvore){
-	int BF=altura(arvore);
+	int BF=bf(arvore);
 	Avl* aux=arvore;
-	if(BF< -1 && altura(aux) <=0)
+	if(BF< -1 && bf(aux) <=0)
 		aux = rotacao_esquerda(aux);
-	else if(BF<1 && altura(aux) <=0)
+	else if(BF<1 && bf(aux) <=0)
 		aux = rotacao_direita(aux);
-	else if(BF<-1 && altura(aux) <0)
+	else if(BF<-1 && bf(aux) <0)
 		aux = dupla_rotacao_esquerda(aux);
-	else if(BF>1 && altura(aux) >0)
+	else if(BF>1 && bf(aux) >0)
 		aux = dupla_rotacao_direita(aux);
 	return aux;
 }
@@ -102,7 +116,7 @@ Avl *inserirRaiz(Avl *arvore,Livro dados){
 		return aux; 
 	}
 	else
-		printf("N√£o foi poss√≠vel alocar mem√≥ria");
+		printf("N„o foi possÌvel alocar memÛria");
 	return arvore;
 }
 Avl *inserirFilhos(Avl *arvore,Livro dados){
@@ -119,9 +133,9 @@ Avl *inserirFilhos(Avl *arvore,Livro dados){
 				aux1->esquerda = NULL;
 				aux->direita=aux1;
 				free(aux1);
-
+				
 			}
-
+				
 		}
 		else if(aux->dados_do_livro.codigo<dados.codigo){
 			if(aux->direita!=NULL)
@@ -146,7 +160,7 @@ Avl *eliminar(Avl *arvore){
 	Avl *aux=arvore,*aux1= (Avl *) malloc(sizeof(Avl));
 
 	if(aux!=NULL){
-		//Eliminar n√≥s que n√£o t√™m filhos(a esquerda e a direita)
+		//Eliminar nÛs que n„o tÍm filhos(a esquerda e a direita)
 		if(aux->direita==NULL && aux->esquerda==NULL){
 				free(aux);
 				return aux;
@@ -166,4 +180,19 @@ Avl *eliminar(Avl *arvore){
 		}	
 	}
 	return aux;
+}
+void distancia(Avl *arvore,int valor, int valor1){
+	Avl *aux=busca(arvore,valor),*aux1=busca(arvore,valor1);
+	int d,h1,h2;
+	if(aux!=NULL && aux1!=NULL){
+		if(aux->direita==aux1||aux1->direita==aux||aux->esquerda==aux1||aux1->esquerda==aux)
+			printf("A dist‚ncia de %d a %d È 1",valor,valor1);
+		else{
+			h1=altura(aux);
+			h2=altura(aux1);
+			d= h1+h2-1;
+			printf("A dist‚ncia de %d a %d È %d",valor,valor1,d);
+			
+		}
+	}
 }
