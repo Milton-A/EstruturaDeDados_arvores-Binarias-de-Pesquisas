@@ -1,4 +1,4 @@
- #include "declaracao.h"
+#include "declaracao.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -16,7 +16,7 @@ struct avl{
 void imprimir(Avl *arvore){
 	if(arvore!=NULL){
 		imprimir(arvore->esquerda);
-		printf("[Autor]: %s [Livro]: %s [cÃ³digo]: %d \n",arvore->dados_do_livro.autor,arvore->dados_do_livro.titutlo,arvore->dados_do_livro.codigo);
+		printf("[Autor]: %s [Livro]: %s [código]: %d \n",arvore->dados_do_livro.autor,arvore->dados_do_livro.titutlo,arvore->dados_do_livro.codigo);
 		imprimir(arvore->direita);
 	}
 }
@@ -44,7 +44,7 @@ Avl *inserirRaiz(Avl *arvore,Livro dados){
 		return aux; 
 	}
 	else
-		printf("NÃ£o foi possÃ­vel alocar memÃ³ria");
+		printf("Não foi possível alocar memória");
 	return arvore;
 }
 void inserirfilhos(Avl *arvore,Livro dados){
@@ -78,3 +78,4 @@ void inserirfilhos(Avl *arvore,Livro dados){
 	}
 	
 }
+
