@@ -19,7 +19,7 @@ void imprimir(Avl *arvore){
 		imprimir(arvore->direita);
 	}
 }
-int altura(Avl *arvore){
+int bf(Avl *arvore){
 	Avl *aux = arvore;
 	int esquerda,direita;
 	if(aux!=NULL||aux->direita!=NULL||aux->esquerda!=NULL)
@@ -30,7 +30,17 @@ int altura(Avl *arvore){
 		return (esquerda-direita);		
 	}	
 }
-
+int altura(Avl *arvore){
+	Avl *aux = arvore;
+	int esquerda,direita;
+	if(aux!=NULL||aux->direita!=NULL||aux->esquerda!=NULL)
+		return 0;
+	else{
+		esquerda= 1+altura(aux->esquerda);
+		direita= 1+altura(aux->direita);
+		return direita>esquerda ? direita:esquerda;		
+	}	
+}
 
 Avl *busca(Avl *arvore, int valor){
 	Avl *aux=arvore;
@@ -77,15 +87,15 @@ Avl *dupla_rotacao_esquerda(Avl* arvore){
 	return aux;
 }
 Avl *equilibrar(Avl *arvore){
-	int BF=altura(arvore);
+	int BF=bf(arvore);
 	Avl* aux=arvore;
-	if(BF< -1 && altura(aux) <=0)
+	if(BF< -1 && bf(aux) <=0)
 		aux = rotacao_esquerda(aux);
-	else if(BF<1 && altura(aux) <=0)
+	else if(BF<1 && bf(aux) <=0)
 		aux = rotacao_direita(aux);
-	else if(BF<-1 && altura(aux) <0)
+	else if(BF<-1 && bf(aux) <0)
 		aux = dupla_rotacao_esquerda(aux);
-	else if(BF>1 && altura(aux) >0)
+	else if(BF>1 && bf(aux) >0)
 		aux = dupla_rotacao_direita(aux);
 	return aux;
 }
@@ -164,4 +174,19 @@ Avl *Eliminar(Avl *arvore){
 		}	
 	}
 	return aux;
+}
+void distancia(Avl *arvore,int valor, int valor1){
+	Avl *aux=busca(arvore,valor),*aux1=busca(arvore,valor1);
+	int d,h1,h2;
+	if(aux!=NULL && aux1!=NULL){
+		if(aux->direita==aux1||aux1->direita==aux||aux->esquerda==aux1||aux1->esquerda==aux)
+			printf("A distância de %d a %d é 1",valor,valor1);
+		else{
+			h1=altura(aux);
+			h2=altura(aux1);
+			d= h1+h2-1;
+			printf("A distância de %d a %d é %d",valor,valor1,d);
+			
+		}
+	}
 }
