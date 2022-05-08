@@ -13,7 +13,9 @@ struct avl{
 	int nivel;
 	Avl *esquerda, *direita;
 };
-void imprimir(Avl *arvore){
+
+// Operacoes de AVL
+void imprimir(Avl *arvore){ //
 	if(arvore!=NULL){
 		imprimir(arvore->esquerda);
 		printf("[Autor]: %s [Livro]: %s [código]: %d \n",arvore->dados_do_livro.autor,arvore->dados_do_livro.titutlo,arvore->dados_do_livro.codigo);
@@ -76,5 +78,9 @@ void inserirfilhos(Avl *arvore,Livro dados){
 			free(aux1);
 		}
 	}
+	
+}
+
+void removerElemento(Avl *arvore,Livro dados){
 	
 }
