@@ -11,14 +11,17 @@ struct avl{
 	Livro dados_do_livro;
 	Avl *esquerda, *direita;
 };
-void inicializarArvore(Avl *arvore){
-	arvore =NULL;
+Avl *inicializarArvore(){
+	return NULL;
 }
 void imprimir(Avl *arvore){
 	if(arvore!=NULL){
 		imprimir(arvore->esquerda);
-		printf("[Autor]: %s [Livro]: %s [código]: %d \n",arvore->dados_do_livro.autor,arvore->dados_do_livro.titutlo,arvore->dados_do_livro.codigo);
+		printf("\t\t\t[Autor]: %s [Livro]: %s [código]: %d \n",arvore->dados_do_livro.autor,arvore->dados_do_livro.titutlo,arvore->dados_do_livro.codigo);
 		imprimir(arvore->direita);
+	}else{
+		printf("\t\t\tNão existem Livros guardados!\n");
+		system("pause");
 	}
 }
 int bf(Avl *arvore){
@@ -55,7 +58,7 @@ Avl *busca(Avl *arvore, int valor){
 			aux=busca(aux->direita,valor);
 	}
 	else{
-		printf("Valor não encontrado...");
+		printf("\t\t\tValor não encontrado...");
 		system("pause");
 	}
 	return aux;
@@ -111,7 +114,7 @@ Avl *inserirRaiz(Avl *arvore,Livro dados){
 		return aux; 
 	}
 	else
-		printf("Não foi possível alocar memória");
+		printf("\t\t\tNão foi possível alocar memória");
 	return arvore;
 }
 Avl *inserirfilhos(Avl *arvore,Livro dados){
@@ -181,12 +184,12 @@ void distancia(Avl *arvore,int valor, int valor1){
 	int d,h1,h2;
 	if(aux!=NULL && aux1!=NULL){
 		if(aux->direita==aux1||aux1->direita==aux||aux->esquerda==aux1||aux1->esquerda==aux)
-			printf("A distância de %d a %d é 1",valor,valor1);
+			printf("\t\t\tA distância de %d a %d é 1",valor,valor1);
 		else{
 			h1=altura(aux);
 			h2=altura(aux1);
 			d= h1+h2-1;
-			printf("A distância de %d a %d é %d",valor,valor1,d);
+			printf("\t\t\tA distância de %d a %d é %d",valor,valor1,d);
 			
 		}
 	}

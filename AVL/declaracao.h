@@ -12,7 +12,7 @@ Avl *dupla_rotacao_direita(Avl *arvore);
 Avl *dupla_rotacao_esquerda(Avl* arvore);
 Avl *equilibrar(Avl *arvore);
 //Operações Basicas AVL
-void inicializarArvore(Avl *arvore);
+Avl *inicializarArvore();
 Avl *inserirRaiz(Avl *arvore,Livro dados);
 Avl *inserirfilhos(Avl *arvore,Livro dados);
 Avl *Eliminar(Avl *arvore);
