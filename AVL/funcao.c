@@ -12,12 +12,10 @@ struct avl{
 	Livro dados_do_livro;
 	Avl *esquerda, *direita;
 };
-
-// Operacoes de AVL
-void imprimir(Avl *arvore){ //
+void imprimir(Avl *arvore){
 	if(arvore!=NULL){
 		imprimir(arvore->esquerda);
-		printf("[Autor]: %s [Livro]: %s [código]: %d \n",arvore->dados_do_livro.autor,arvore->dados_do_livro.titutlo,arvore->dados_do_livro.codigo);
+		printf("[Autor]: %s [Livro]: %s [cÃ³digo]: %d \n",arvore->dados_do_livro.autor,arvore->dados_do_livro.titutlo,arvore->dados_do_livro.codigo);
 		imprimir(arvore->direita);
 	}
 }
@@ -37,7 +35,7 @@ int altura(Avl *arvore){
 Avl *busca(Avl *arvore, int valor){
 	Avl *aux=arvore;
 	if(aux!=NULL){
-		//retorna quando o valor do código do nó for igual ao que procuramos
+		//retorna quando o valor do cÃ³digo do nÃ³ for igual ao que procuramos
 		if(aux->dados_do_livro.codigo==valor)
 			return aux;
 		else if(aux->dados_do_livro.codigo<valor)
@@ -46,7 +44,7 @@ Avl *busca(Avl *arvore, int valor){
 			aux=busca(aux->direita,valor);
 	}
 	else{
-		printf("Valor não encontrado...");
+		printf("Valor nÃ£o encontrado...");
 		system("pause");
 	}
 	return aux;
@@ -102,7 +100,7 @@ Avl *inserirRaiz(Avl *arvore,Livro dados){
 		return aux; 
 	}
 	else
-		printf("Não foi possível alocar memória");
+		printf("NÃ£o foi possÃ­vel alocar memÃ³ria");
 	return arvore;
 }
 Avl *inserirfilhos(Avl *arvore,Livro dados){
@@ -119,9 +117,9 @@ Avl *inserirfilhos(Avl *arvore,Livro dados){
 				aux1->esquerda = NULL;
 				aux->direita=aux1;
 				free(aux1);
-				
+
 			}
-				
+
 		}
 		else if(aux->dados_do_livro.codigo<dados.codigo){
 			if(aux->direita!=NULL)
@@ -140,21 +138,13 @@ Avl *inserirfilhos(Avl *arvore,Livro dados){
 	}else{
 		return arvore;
 	}
-<<<<<<< HEAD
-	
-}
-
-void removerElemento(Avl *arvore,Livro dados){
-	
-}
-=======
 	return equilibrar(aux);
 }
 Avl *Eliminar(Avl *arvore){
 	Avl *aux=arvore,*aux1= (Avl *) malloc(sizeof(Avl));
 
 	if(aux!=NULL){
-		//Eliminar nós que não têm filhos(a esquerda e a direita)
+		//Eliminar nÃ³s que nÃ£o tÃªm filhos(a esquerda e a direita)
 		if(aux->direita==NULL && aux->esquerda==NULL){
 				free(aux);
 				return aux;
@@ -175,4 +165,3 @@ Avl *Eliminar(Avl *arvore){
 	}
 	return aux;
 }
->>>>>>> 7e297f3d02812321727452635506bb83995ed61f
