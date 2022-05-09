@@ -41,7 +41,13 @@ int altura(Avl *arvore){
 		return direita>esquerda ? direita:esquerda;		
 	}	
 }
-
+Avl *buscamenorelemento(Avl *arvore){
+	Avl *aux=arvore;
+	if(aux->esquerda!=NULL)
+		aux=buscamenorelemento(aux->esquerda);
+	else
+		return aux;
+}
 Avl *busca(Avl *arvore, int valor){
 	Avl *aux=arvore;
 	if(aux!=NULL){
@@ -150,27 +156,35 @@ Avl *inserirfilhos(Avl *arvore,Livro dados){
 	}
 	return equilibrar(aux);
 }
+
 Avl *Eliminar(Avl *arvore){
-	Avl *aux=arvore,*aux1= (Avl *) malloc(sizeof(Avl));
+	Avl *aux=arvore,*aux1= NULL;
 
 	if(aux!=NULL){
 		//Eliminar nós que não têm filhos(a esquerda e a direita)
 		if(aux->direita==NULL && aux->esquerda==NULL){
 				free(aux);
-				return aux;
+				return NULL;
 			}
 		else if(aux->direita!=NULL && aux->esquerda==NULL ){
 			aux1=aux->direita;
 			aux1->esquerda=aux;
 			free(aux);
-			return equilibrar(aux);;
+			return equilibrar(aux1);;
 		}
 		else if(aux->direita==NULL && aux->esquerda!=NULL ){
 			aux1=aux->esquerda;
 			aux1->direita=aux;
 			free(aux);
-			return equilibrar(aux);;
+			return equilibrar(aux1);
 
+		}else{
+			aux1=buscamenorelemento(aux->direita);
+			strcpy(aux->dados_do_livro.autor,aux1->dados_do_livro.autor);
+			strcpy(aux->dados_do_livro.autor,aux1->dados_do_livro.autor);
+			aux->dados_do_livro.codigo = aux1->dados_do_livro.codigo;
+			free(aux1);
+			return equilibrar(aux);
 		}	
 	}
 	return aux;
