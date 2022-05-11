@@ -1,12 +1,12 @@
 #include "funcao.c"
 
-main() {
+int main() {
 	int opcao, codigoLivro;
 	Avl *arvoreLivros, *aux;
 	Livro dadoLivros;
 
-	arvoreLivros=inicializarArvore(arvoreLivros);
-	aux=inicializarArvore(aux);
+	arvoreLivros=inicializarArvore();
+	aux=inicializarArvore();
 
 	do {
 		system("cls");
@@ -27,7 +27,7 @@ main() {
 				fflush(stdin);
 				printf("\t\t\tInsira o codigo do Livro");
 				scanf("%d",&dadoLivros.codigo);
-
+			arvoreLivros=	insere(arvoreLivros, dadoLivros);
 				break;
 			case 2:// Eliminar
 				printf("\t\t\tInsira o código do livro: ");
@@ -47,6 +47,7 @@ main() {
 			case 5: //Imprimir
 				printf("\t\t\tLirvos Armazenados\n");
 				imprimir(arvoreLivros);
+				system("pause");
 				break;
 			case 0:
 				printf("\t\t\t Terminar Operações");

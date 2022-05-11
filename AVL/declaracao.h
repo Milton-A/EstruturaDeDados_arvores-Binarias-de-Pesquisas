@@ -17,3 +17,9 @@ Avl *inserirRaiz(Avl *arvore,Livro dados);
 Avl *inserirfilhos(Avl *arvore,Livro dados);
 Avl *Eliminar(Avl *arvore);
 void imprimir(Avl *arvore);
+
+
+
+// Código para teste
+Avl * insere(Avl * arv, Livro lvr );
+Avl * aloca(int info);
