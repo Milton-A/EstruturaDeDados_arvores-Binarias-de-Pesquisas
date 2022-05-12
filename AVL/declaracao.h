@@ -15,8 +15,20 @@ Avl *equilibrar(Avl *arvore);
 //Operações Basicas AVL
 Avl *inicializarArvore();
 Avl *inserirRaiz(Avl *arvore,Livro dados);
+<<<<<<< HEAD
 void inserirfilhos(Avl *arvore,Livro dados);
 Avl *Eliminar(Avl *arvore,int valor);
 void imprimirpreordem(Avl *arvore);
 void imprimirposordem(Avl *arvore);
 void imprimir(Avl *arvore);
+=======
+Avl *inserirfilhos(Avl *arvore,Livro dados);
+Avl *Eliminar(Avl *arvore);
+void imprimir(Avl *arvore);
+
+
+
+// Código para teste
+Avl * insere(Avl * arv, Livro lvr );
+Avl * aloca(int info);
+>>>>>>> d45e014fb0f707a5fb269bb36a24035e22e450d3
