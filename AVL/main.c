@@ -1,21 +1,10 @@
 #include "funcao.c"
-<<<<<<< HEAD
 #include <stdio.h>
 main() {
 	int opcao, codigoLivro;
 	Avl *arvorelivros, *aux;
 	Livro dadolivros;
 	int codigo,cont=0;
-=======
-
-int main() {
-	int opcao, codigoLivro;
-	Avl *arvoreLivros, *aux;
-	Livro dadoLivros;
-
-	arvoreLivros=inicializarArvore();
-	aux=inicializarArvore();
->>>>>>> d45e014fb0f707a5fb269bb36a24035e22e450d3
 
 	arvorelivros=inicializarArvore();
 	do {
@@ -32,41 +21,6 @@ int main() {
 		fflush(stdin);
 		scanf("%d",&opcao);
 		switch(opcao) {
-<<<<<<< HEAD
-=======
-			case 1: //Inserir
-				fflush(stdin);
-				printf("\t\t\tInsira o nome do Autor: ");
-				gets(dadoLivros.autor);
-				fflush(stdin);
-				printf("\t\t\tInsira o Titulo do Livro: ");
-				gets(dadoLivros.titutlo);
-				fflush(stdin);
-				printf("\t\t\tInsira o codigo do Livro");
-				scanf("%d",&dadoLivros.codigo);
-			arvoreLivros=	insere(arvoreLivros, dadoLivros);
-				break;
-			case 2:// Eliminar
-				printf("\t\t\tInsira o código do livro: ");
-				scanf("%d",&codigoLivro);
-				//aux=busca(arvoreLivros, codigoLivro);
-				//Eliminar(aux);
-				break;
-			case 3: //Calcular altura
-				break;
-			case 4: //Procurar
-				printf("\t\t\tInsira o código do livro: ");
-				scanf("%d",&codigoLivro);
-				aux=busca(arvoreLivros, codigoLivro);
-				if(aux!=NULL)
-					imprimir(aux);
-				break;
-			case 5: //Imprimir
-				printf("\t\t\tLirvos Armazenados\n");
-				imprimir(arvoreLivros);
-				system("pause");
-				break;
->>>>>>> d45e014fb0f707a5fb269bb36a24035e22e450d3
 			case 0:
 				printf("\t\t\t Terminar Operações");
 				system("Pause");
